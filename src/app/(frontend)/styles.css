@@ -1294,13 +1294,14 @@ a.expertise-card:hover .expertise-card-btn {
 
 /* Treatments page layout */
 .treatments-page {
-  padding: 2rem 1.5rem 4rem;
+  padding-bottom: 4rem;
   background: linear-gradient(180deg, #f8fafc 0%, #fff 12%);
 }
 
 .treatments-page .treatments-inner {
   max-width: 1100px;
   margin: 0 auto;
+  padding: 2rem 1.5rem 0;
 }
 
 .treatments-hero {
