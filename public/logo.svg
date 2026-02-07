@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="logo-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E0F2FE"/>
+      <stop offset="100%" stop-color="#BAE6FD"/>
+    </linearGradient>
+    <linearGradient id="logo-accent" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0EA5E9"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+  </defs>
+  <!-- Circle -->
+  <circle cx="60" cy="60" r="55" fill="url(#logo-bg)" stroke="url(#logo-accent)" stroke-width="2"/>
+  <!-- Rod of Asclepius: staff -->
+  <line x1="60" y1="26" x2="60" y2="94" stroke="url(#logo-accent)" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Serpent wrapping staff (smooth curve) -->
+  <path d="M 60 32 C 72 38 72 50 60 56 C 48 62 48 74 60 80 C 72 86 72 92 60 92" 
+        stroke="url(#logo-accent)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+  <!-- Medical cross at top -->
+  <g stroke="url(#logo-accent)" stroke-width="2" stroke-linecap="round">
+    <line x1="60" y1="20" x2="60" y2="26"/>
+    <line x1="56" y1="23" x2="64" y2="23"/>
+  </g>
+</svg>
