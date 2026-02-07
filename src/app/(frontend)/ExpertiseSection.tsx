@@ -3,34 +3,42 @@
 import Link from 'next/link'
 import { useRef, useEffect, useCallback } from 'react'
 
+/** pageSlug: used for /treatments/[slug] link; omit for WhatsApp-only */
 const EXPERTISE_ITEMS = [
-  { label: 'Skin Treatments', slug: 'skin-treatments', src: '/skilltreatments.png', summary: 'Natural remedies for acne, eczema, pigmentation and other skin concerns. Gentle, side-effect free care for healthy skin.' },
-  { label: 'Allergy', slug: 'allergy', src: '/allergy_icon_no_bg.png', summary: 'Constitutional treatment for seasonal, food and environmental allergies. Reduce sensitivity and build long-term relief.' },
-  { label: 'PCOD', slug: 'pcod', src: '/pcod.png', summary: 'Holistic homoeopathic care for hormonal balance, irregular cycles and related symptoms. Personalized plans for lasting wellness.' },
-  { label: 'Gynaecology', slug: 'gynaecology', src: '/GYNAECOLOGY.png', summary: 'Care for menstrual disorders, fertility support and general women\'s health. Safe, natural treatment at every stage.' },
-  { label: 'Migraine', slug: 'migraine', src: '/migraine.png', summary: 'Targeted relief for migraine and chronic headaches. Address triggers and frequency with constitutional homoeopathy.' },
-  { label: 'Hair Loss', slug: 'hair-loss', src: '/hairloss.png', summary: 'Treatment for hair fall, thinning and scalp conditions. Strengthen roots and promote healthy growth naturally.' },
-  { label: 'Diabetes', slug: 'diabetes', src: '/diabtics.png', summary: 'Support for blood sugar balance and diabetic care. Used alongside lifestyle changes for better control.' },
-  { label: 'Uric Acid', slug: 'uric-acid', src: '/uricacidf.png', summary: 'Management of raised uric acid and gout. Reduce flare-ups and support joint health with natural remedies.' },
-  { label: 'Knee Pain', slug: 'knee-pain', src: '/kenpain.png', summary: 'Relief for knee pain, stiffness and arthritis. Ease discomfort and improve mobility without harsh drugs.' },
-  { label: 'Back Pain', slug: 'back-pain', src: '/backpain.png', summary: 'Care for acute and chronic back pain. Address muscle, disc and postural issues with personalized treatment.' },
-  { label: 'Thyroid', slug: 'thyroid', src: '/tyroid.png', summary: 'Support for hypo and hyperthyroid conditions. Balance energy, weight and mood with homoeopathic care.' },
+  { label: 'Skin Treatments', slug: 'skin', pageSlug: 'skin', src: '/skilltreatments.png', summary: 'Natural remedies for acne, eczema, pigmentation and other skin concerns.' },
+  { label: 'Allergy', slug: 'allergy', pageSlug: 'allergy', src: '/allergy_icon_no_bg.png', summary: 'Constitutional treatment for seasonal, food and environmental allergies.' },
+  { label: 'PCOD', slug: 'pcod', pageSlug: 'pcod', src: '/pcod.png', summary: 'Holistic homoeopathic care for hormonal balance and irregular cycles.' },
+  { label: 'Gynaecology', slug: 'gynaecology', pageSlug: 'gynaecology', src: '/GYNAECOLOGY.png', summary: 'Care for menstrual disorders, fertility and women\'s health.' },
+  { label: 'Migraine', slug: 'migraine', pageSlug: 'migraine', src: '/migraine.png', summary: 'Targeted relief for migraine and chronic headaches.' },
+  { label: 'Hair Loss', slug: 'hair-loss', pageSlug: 'hair-loss', src: '/hairloss.png', summary: 'Treatment for hair fall, thinning and scalp conditions.' },
+  { label: 'Diabetes', slug: 'diabetes', pageSlug: 'diabetes', src: '/diabtics.png', summary: 'Support for blood sugar balance and diabetic care.' },
+  { label: 'Uric Acid', slug: 'uric-acid', pageSlug: 'uric-acid', src: '/uricacidf.png', summary: 'Management of raised uric acid and gout.' },
+  { label: 'Knee & Back Pain', slug: 'back-pain', pageSlug: 'back-pain', src: '/backpain.png', summary: 'Relief for knee, back pain and joint issues.' },
+  { label: 'Thyroid', slug: 'thyroid', pageSlug: 'thyroid', src: '/tyroid.png', summary: 'Support for hypo and hyperthyroid conditions.' },
 ]
 
 const MARQUEE_SPEED = 1.2
 const MARQUEE_PAUSE_AFTER_ARROW_MS = 3000
 
-function Card({ label, slug, src, summary }: { label: string; slug: string; src: string; summary: string }) {
-  return (
-    <div className="expertise-card">
+function Card({ label, pageSlug, src, summary }: { label: string; pageSlug?: string; src: string; summary: string }) {
+  const content = (
+    <>
       <span className="expertise-card-icon">
-        <img src={src} alt="" width={96} height={96} className="expertise-card-img" />
+        <img src={src} alt="" width={80} height={80} className="expertise-card-img" />
       </span>
       <h3 className="expertise-card-title">{label}</h3>
       <p className="expertise-card-summary">{summary}</p>
-      <a href="https://wa.me/917356736929" target="_blank" rel="noopener noreferrer" className="expertise-card-btn">VIEW DETAILS</a>
-    </div>
+      <span className="expertise-card-btn">View details →</span>
+    </>
   )
+  if (pageSlug) {
+    return (
+      <Link href={`/treatments/${pageSlug}`} className="expertise-card">
+        {content}
+      </Link>
+    )
+  }
+  return <div className="expertise-card">{content}</div>
 }
 
 type ExpertiseSectionProps = {
@@ -99,18 +107,18 @@ export default function ExpertiseSection({ title = 'Areas of Expertise', subtitl
           <div className="expertise-marquee-inner">
             <div ref={firstSetRef} className="expertise-grid">
               {EXPERTISE_ITEMS.map((item) => (
-                <Card key={item.slug} {...item} />
+                <Card key={item.slug} label={item.label} pageSlug={item.pageSlug} src={item.src} summary={item.summary} />
               ))}
             </div>
             <div className="expertise-grid">
               {EXPERTISE_ITEMS.map((item) => (
-                <Card key={`dup-${item.slug}`} {...item} />
+                <Card key={`dup-${item.slug}`} label={item.label} pageSlug={item.pageSlug} src={item.src} summary={item.summary} />
               ))}
             </div>
           </div>
         </div>
         <div className="expertise-footer">
-          <a href="https://wa.me/917356736929" target="_blank" rel="noopener noreferrer" className="btn btn-teal">VIEW MORE</a>
+          <Link href="/treatments" className="btn btn-teal">View all treatments</Link>
           <div className="expertise-nav">
             <button type="button" className="expertise-nav-btn" onClick={() => scroll('left')} aria-label="Scroll left">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>

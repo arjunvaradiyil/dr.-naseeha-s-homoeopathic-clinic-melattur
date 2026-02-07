@@ -36,40 +36,42 @@ export default function TreatmentsIndexPage() {
   return (
     <>
       <Header />
-      <main className="about-page contact-page">
-        <div className="contact-inner" style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <h1 className="about-content-title">Homoeopathy Treatments in Melattur & Malappuram</h1>
-          <p className="about-content-intro" style={{ marginBottom: '2rem' }}>
-            At {CLINIC.name}, we offer personalized homoeopathic care for a wide range of conditions. Each treatment plan is tailored to your needs. Book a consultation at our clinic in Melattur, Kerala.
-          </p>
+      <main className="treatments-page">
+        <div className="treatments-inner">
+          <header className="treatments-hero">
+            <h1 className="treatments-hero-title">Homoeopathy Treatments in Melattur & Malappuram</h1>
+            <p className="treatments-hero-intro">
+              At {CLINIC.name}, we offer personalized homoeopathic care for a wide range of conditions. Each treatment plan is tailored to your needs. Consultations are available at our clinic in Melattur, Kerala—<strong>online consultation is also available</strong>.
+            </p>
+            <a href="https://wa.me/917356736929" target="_blank" rel="noopener noreferrer" className="btn btn-teal treatments-hero-cta">Book Appointment via WhatsApp</a>
+          </header>
 
-          <section aria-labelledby="treatment-list-heading">
-            <h2 id="treatment-list-heading" className="about-content-heading">Our Treatments</h2>
-            <ul className="footer-links" style={{ listStyle: 'none', padding: 0, display: 'grid', gap: '1rem', marginTop: '1rem' }}>
+          <section className="treatments-list" aria-labelledby="treatment-list-heading">
+            <h2 id="treatment-list-heading" className="treatments-list-title">Our Treatments</h2>
+            <ul className="treatments-grid">
               {TREATMENT_SLUGS.map((slug) => {
                 const t = TREATMENTS[slug]
                 const img = TREATMENT_IMAGES[slug]
+                const title = t.h1.replace(' with Homeopathy in Melattur', '').replace(' in Malappuram & Melattur', '').replace(' & Knee Pain Treatment with Homeopathy in Melattur', '')
                 return (
                   <li key={slug}>
-                    <Link href={`/treatments/${slug}`} className="expertise-card" style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem', borderRadius: 10, border: '1px solid var(--color-teal)', textDecoration: 'none', color: 'inherit' }}>
+                    <Link href={`/treatments/${slug}`} className="expertise-card">
                       {img && (
-                        <span style={{ flexShrink: 0 }}>
-                          <Image src={img} alt="" width={64} height={64} />
+                        <span className="expertise-card-icon">
+                          <Image src={img} alt="" width={48} height={48} className="expertise-card-img" />
                         </span>
                       )}
-                      <div>
-                        <strong style={{ color: 'var(--accent, #dc2626)' }}>{t.h1.replace(' with Homeopathy in Melattur', '').replace(' in Malappuram & Melattur', '')}</strong>
-                        <p style={{ margin: '0.25rem 0 0', fontSize: '0.9rem', color: 'var(--color-text)' }}>{t.description.slice(0, 100)}…</p>
-                      </div>
+                      <h3 className="expertise-card-title">{title}</h3>
+                      <p className="expertise-card-summary">{t.description.slice(0, 120)}…</p>
+                      <span className="expertise-card-btn">View details →</span>
                     </Link>
                   </li>
                 )
               })}
             </ul>
-          </section>
-
-          <section className="about-cta" style={{ marginTop: '2rem' }}>
-            <a href="https://wa.me/917356736929" target="_blank" rel="noopener noreferrer" className="btn btn-teal">Book Appointment via WhatsApp</a>
+            <div className="treatments-cta">
+              <a href="https://wa.me/917356736929" target="_blank" rel="noopener noreferrer" className="btn btn-teal">Book Appointment via WhatsApp</a>
+            </div>
           </section>
         </div>
       </main>
