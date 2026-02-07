@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import Image from 'next/image'
+import ResultsSlider from './ResultsSlider'
 
 const RESULTS_DIR = path.join(process.cwd(), 'public', 'RESULTS')
 const IMAGE_EXT = /\.(png|jpe?g|webp|gif)$/i
@@ -26,22 +26,7 @@ export default function ResultsSection() {
       <div className="results-inner">
         <h2 className="results-title">Treatment Results</h2>
         <p className="results-sub">Real outcomes from our homoeopathic care</p>
-        <div className="results-grid">
-          {resultImages.map((filename, i) => (
-            <div key={filename} className="results-card">
-              <div className="results-card-image">
-                <Image
-                  src={`/RESULTS/${encodeURIComponent(filename)}`}
-                  alt={`Treatment result ${i + 1}`}
-                  width={320}
-                  height={400}
-                  className="results-img"
-                  sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
-                />
-              </div>
-            </div>
-          ))}
-        </div>
+        <ResultsSlider images={resultImages} />
       </div>
     </section>
   )

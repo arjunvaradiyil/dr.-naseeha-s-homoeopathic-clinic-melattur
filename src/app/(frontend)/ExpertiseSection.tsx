@@ -17,7 +17,7 @@ const EXPERTISE_ITEMS = [
   { label: 'Thyroid', slug: 'thyroid', src: '/expertise/thyroid.png', summary: 'Support for hypo and hyperthyroid conditions. Balance energy, weight and mood with homoeopathic care.' },
 ]
 
-const MARQUEE_SPEED = 0.8
+const MARQUEE_SPEED = 1.2
 const MARQUEE_PAUSE_AFTER_ARROW_MS = 3000
 
 function Card({ label, slug, src, summary }: { label: string; slug: string; src: string; summary: string }) {
@@ -63,16 +63,23 @@ export default function ExpertiseSection({ title = 'Areas of Expertise', subtitl
     const el = scrollRef.current
     if (!el) return
     const firstSet = firstSetRef.current
+    let started = false
     const tick = () => {
       if (!scrollRef.current) return
       const container = scrollRef.current
+      const setWidth = firstSet?.offsetWidth ?? 0
+      if (setWidth <= 0 && !started) {
+        rafRef.current = requestAnimationFrame(tick)
+        return
+      }
+      started = true
       if (marqueePausedRef.current) {
         rafRef.current = requestAnimationFrame(tick)
         return
       }
-      const setWidth = firstSet?.offsetWidth ?? container.scrollWidth / 2
+      const width = setWidth || container.scrollWidth / 2
       container.scrollLeft += MARQUEE_SPEED
-      if (container.scrollLeft >= setWidth - 1) {
+      if (container.scrollLeft >= width - 1) {
         container.scrollLeft = 0
       }
       rafRef.current = requestAnimationFrame(tick)
