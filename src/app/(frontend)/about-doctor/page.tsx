@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Header from '../Header'
 import Footer from '../Footer'
+import PageBanner from '../PageBanner'
 import ExpertiseSection from '../ExpertiseSection'
 import { CLINIC } from '@/lib/seo'
 import { canonical, buildMetaDescription } from '@/lib/seo'
@@ -26,6 +27,7 @@ export default function AboutDoctorPage() {
     <>
       <Header />
       <main className="about-page">
+        <PageBanner title="ABOUT DOCTOR" items={[{ label: 'HOME', href: '/' }, { label: 'ABOUT DOCTOR' }]} />
         <section className="about-content">
           <div className="about-content-inner">
             <div className="about-content-text">

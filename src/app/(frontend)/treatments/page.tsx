@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Header from '../Header'
 import Footer from '../Footer'
+import PageBanner from '../PageBanner'
 import { TREATMENT_SLUGS, TREATMENTS, CLINIC, canonical, buildMetaDescription } from '@/lib/seo'
 import '../styles.css'
 
@@ -37,6 +38,7 @@ export default function TreatmentsIndexPage() {
     <>
       <Header />
       <main className="treatments-page">
+        <PageBanner title="TREATMENTS" items={[{ label: 'HOME', href: '/' }, { label: 'TREATMENTS' }]} />
         <div className="treatments-inner">
           <header className="treatments-hero">
             <h1 className="treatments-hero-title">Homoeopathy Treatments in Melattur & Malappuram</h1>

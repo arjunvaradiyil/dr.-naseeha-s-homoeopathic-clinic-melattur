@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Header from '../Header'
 import Footer from '../Footer'
+import PageBanner from '../PageBanner'
 import { CLINIC } from '@/lib/seo'
 import { canonical, buildMetaDescription } from '@/lib/seo'
 import '../styles.css'
@@ -19,38 +20,41 @@ export const metadata = {
   alternates: { canonical: canonical('/blog') },
 }
 
-/** Placeholder topics for future blog posts */
+/** Topics we cover – full articles coming soon */
 const BLOG_TOPICS = [
-  { title: 'Understanding Homoeopathy for Daily Wellness', excerpt: 'How homoeopathy works and why it is a gentle option for the family.' },
-  { title: 'PCOD and Homoeopathy: What You Need to Know', excerpt: 'Holistic approach to PCOD with homoeopathic treatment.' },
-  { title: 'Allergy Relief with Homoeopathy in Kerala', excerpt: 'Seasonal and food allergy management with natural treatment.' },
+  { title: 'Understanding Homoeopathy for Daily Wellness', excerpt: 'How homoeopathy works and why it is a gentle option for the whole family.' },
+  { title: 'PCOD and Homoeopathy: What You Need to Know', excerpt: 'A holistic approach to PCOD with homoeopathic treatment and lifestyle support.' },
+  { title: 'Allergy Relief with Homoeopathy in Kerala', excerpt: 'Seasonal and food allergy management with natural, side-effect free treatment.' },
 ]
 
 export default function BlogPage() {
   return (
     <>
       <Header />
-      <main className="about-page contact-page">
-        <div className="contact-inner" style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <h1 className="about-content-title">Health Tips & Blog</h1>
-          <p className="about-content-intro">
-            Insights and health tips from {CLINIC.name}, Melattur. We share practical information on homoeopathy, common conditions and natural wellness.
-          </p>
-
-          <section aria-labelledby="blog-list-heading" style={{ marginTop: '2rem' }}>
-            <h2 id="blog-list-heading" className="about-content-heading">Topics we cover</h2>
-            <p className="about-content-intro" style={{ marginBottom: '1.5rem' }}>
-              New articles will be added here. Explore our <Link href="/treatments">treatments</Link> and <Link href="/about-doctor">about the doctor</Link> for more information.
+      <main className="blog-page">
+        <PageBanner title="HEALTH TIPS" items={[{ label: 'HOME', href: '/' }, { label: 'HEALTH TIPS' }]} />
+        <div className="blog-inner">
+          <header className="blog-hero">
+            <h1 className="blog-hero-title">Health Tips & Blog</h1>
+            <p className="blog-hero-intro">
+              Practical insights on homoeopathy, common conditions and natural wellness from {CLINIC.name}, Melattur. We share tips to help you and your family stay healthy.
             </p>
-            <ul className="footer-links" style={{ listStyle: 'none', padding: 0 }}>
+          </header>
+
+          <section className="blog-content" aria-labelledby="blog-topics-heading">
+            <h2 id="blog-topics-heading" className="blog-section-title">Topics we cover</h2>
+            <p className="blog-section-intro">
+              New articles will be added here soon. In the meantime, explore our <Link href="/treatments">treatments</Link> and <Link href="/about-doctor">about the doctor</Link> for more on what we offer.
+            </p>
+            <ul className="blog-topic-list">
               {BLOG_TOPICS.map((post, i) => (
-                <li key={i} style={{ marginBottom: '1.25rem', paddingBottom: '1.25rem', borderBottom: '1px solid #e2e8f0' }}>
-                  <h3 style={{ fontSize: '1.1rem', marginBottom: '0.35rem', color: 'var(--accent, #dc2626)' }}>{post.title}</h3>
-                  <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--color-text)' }}>{post.excerpt}</p>
+                <li key={i} className="blog-topic-card">
+                  <h3 className="blog-topic-title">{post.title}</h3>
+                  <p className="blog-topic-excerpt">{post.excerpt}</p>
                 </li>
               ))}
             </ul>
-            <p className="about-content-intro" style={{ marginTop: '1rem' }}>More health tips and articles coming soon.</p>
+            <p className="blog-coming-soon">More health tips and articles coming soon.</p>
           </section>
         </div>
       </main>

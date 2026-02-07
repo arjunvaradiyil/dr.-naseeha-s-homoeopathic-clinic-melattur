@@ -1,5 +1,6 @@
 import Header from '../Header'
 import Footer from '../Footer'
+import PageBanner from '../PageBanner'
 import { FaMapMarkerAlt, FaMobileAlt, FaEnvelope } from 'react-icons/fa'
 import { canonical, buildMetaDescription } from '@/lib/seo'
 import '../styles.css'
@@ -23,6 +24,7 @@ export default function ContactPage() {
     <>
       <Header />
       <main className="contact-page">
+        <PageBanner title="CONTACT" items={[{ label: 'HOME', href: '/' }, { label: 'CONTACT' }]} />
         <div className="contact-inner">
           {/* Left: info cards */}
           <div className="contact-cards">
@@ -65,6 +67,7 @@ export default function ContactPage() {
           {/* Right: form + map */}
           <div className="contact-right">
             <h2 className="contact-form-title">Get in touch with us</h2>
+            <p className="contact-intro-note">In-clinic and online consultation available.</p>
             <p className="contact-book-cta">
               <a href="https://wa.me/917356736929" target="_blank" rel="noopener noreferrer" className="btn btn-teal">Book Appointment via WhatsApp</a>
             </p>

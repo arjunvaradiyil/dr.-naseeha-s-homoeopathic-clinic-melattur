@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Header from '../Header'
 import Footer from '../Footer'
+import PageBanner from '../PageBanner'
 import { CLINIC } from '@/lib/seo'
 import { canonical, buildMetaDescription } from '@/lib/seo'
 import '../styles.css'
@@ -26,6 +27,7 @@ export default function BookAppointmentPage() {
     <>
       <Header />
       <main className="contact-page about-page">
+        <PageBanner title="BOOK APPOINTMENT" items={[{ label: 'HOME', href: '/' }, { label: 'BOOK APPOINTMENT' }]} />
         <div className="contact-inner" style={{ maxWidth: '600px', margin: '0 auto' }}>
           <h1 className="about-content-title">Book an Appointment</h1>
           <p className="about-content-intro">

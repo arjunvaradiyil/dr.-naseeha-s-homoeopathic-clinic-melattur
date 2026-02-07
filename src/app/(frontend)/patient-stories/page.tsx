@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Header from '../Header'
 import Footer from '../Footer'
+import PageBanner from '../PageBanner'
 import '../styles.css'
 
 import { canonical, buildMetaDescription } from '@/lib/seo'
@@ -56,18 +57,7 @@ export default function PatientStoriesPage() {
     <>
       <Header />
       <main className="stories-page">
-        <header className="stories-page-header">
-          <div className="stories-page-header-pattern" aria-hidden />
-          <div className="stories-page-header-inner">
-            <h1 className="stories-page-title">PATIENT STORIES</h1>
-            <nav className="stories-page-breadcrumb" aria-label="Breadcrumb">
-              <Link href="/">HOME</Link>
-              <span className="stories-page-breadcrumb-sep" aria-hidden>→</span>
-              <span>PATIENT STORIES</span>
-            </nav>
-          </div>
-        </header>
-
+        <PageBanner title="PATIENT STORIES" items={[{ label: 'HOME', href: '/' }, { label: 'PATIENT STORIES' }]} />
         <div className="stories-page-content">
           <div className="stories-grid">
             {STORIES.map((story, i) => (

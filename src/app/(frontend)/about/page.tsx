@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Header from '../Header'
 import Footer from '../Footer'
+import PageBanner from '../PageBanner'
 import ExpertiseSection from '../ExpertiseSection'
 import '../styles.css'
 
@@ -32,6 +33,7 @@ export default function AboutPage() {
     <>
       <Header />
       <main className="about-page">
+        <PageBanner title="ABOUT" items={[{ label: 'HOME', href: '/' }, { label: 'ABOUT' }]} />
         {/* Two-column: content left, image right */}
         <section className="about-content">
           <div className="about-content-inner">

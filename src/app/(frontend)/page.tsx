@@ -48,7 +48,7 @@ export default function HomePage() {
               <h1 className="hero-title">Experience a Gentler Way to Wellness</h1>
               <p className="hero-subtitle">At Dr. Naseeha&apos;s Homoeopathic Clinic</p>
               <p className="hero-desc">
-                Every patient is unique. We offer personalized, side-effect free homoeopathic care for the whole family—from infants to old age—so you can regain vitality and balance through time-tested, natural solutions.
+                Every patient is unique. We offer personalized, side-effect free homoeopathic care for the whole family—from infants to old age—so you can regain vitality and balance through time-tested, natural solutions. Online consultation is also available.
               </p>
               <a href="https://wa.me/917356736929?text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Dr.%20Naseeha's%20Homoeopathic%20Clinic." target="_blank" rel="noopener noreferrer" className="btn btn-teal btn-hero-cta">Book Appointment</a>
             </div>

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Header from '../Header'
 import Footer from '../Footer'
+import PageBanner from '../PageBanner'
 import '../styles.css'
 
 import { canonical, buildMetaDescription } from '@/lib/seo'
@@ -51,18 +52,7 @@ export default async function AwarenessVideosPage() {
     <>
       <Header />
       <main className="videos-page">
-        <header className="videos-page-header">
-          <div className="videos-page-header-pattern" aria-hidden />
-          <div className="videos-page-header-inner">
-            <h1 className="videos-page-title">AWARENESS VIDEOS</h1>
-            <nav className="videos-page-breadcrumb" aria-label="Breadcrumb">
-              <Link href="/">HOME</Link>
-              <span className="videos-page-breadcrumb-sep" aria-hidden>→</span>
-              <span>AWARENESS VIDEOS</span>
-            </nav>
-          </div>
-        </header>
-
+        <PageBanner title="AWARENESS VIDEOS" items={[{ label: 'HOME', href: '/' }, { label: 'AWARENESS VIDEOS' }]} />
         <div className="videos-page-content">
           <div className="videos-grid">
             {videos.map((video, i) => (

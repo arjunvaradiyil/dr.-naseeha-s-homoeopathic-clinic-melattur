@@ -3,9 +3,10 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import Header from '../../Header'
 import Footer from '../../Footer'
+import PageBanner from '../../PageBanner'
 import { TREATMENT_SLUGS, TREATMENTS, CLINIC } from '@/lib/seo'
 import type { TreatmentSlug } from '@/lib/seo'
-import { canonical, buildMetaTitle, buildMetaDescription } from '@/lib/seo'
+import { canonical, buildMetaDescription } from '@/lib/seo'
 import '../../styles.css'
 
 const TREATMENT_IMAGES: Record<string, string> = {
@@ -42,6 +43,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
+function treatmentTitleShort(h1: string) {
+  return h1
+    .replace(' with Homeopathy in Melattur', '')
+    .replace(' in Malappuram & Melattur', '')
+    .replace(' & Knee Pain Treatment with Homeopathy in Melattur', '')
+    .trim()
+}
+
 export default async function TreatmentPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const validSlug = TREATMENT_SLUGS.includes(slug as TreatmentSlug) ? (slug as TreatmentSlug) : null
@@ -51,52 +60,87 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
   const img = TREATMENT_IMAGES[validSlug]
   const otherSlugs = TREATMENT_SLUGS.filter((s) => s !== validSlug).slice(0, 6)
 
+  const breadcrumbTitle = treatmentTitleShort(t.h1).toUpperCase()
+
   return (
     <>
       <Header />
-      <main className="about-page contact-page">
-        <div className="contact-inner" style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <article>
-            {img && (
-              <div style={{ marginBottom: '1.5rem', textAlign: 'center' }}>
-                <Image src={img} alt="" width={120} height={120} />
-              </div>
-            )}
-            <h1 className="about-content-title">{t.h1}</h1>
-            <p className="about-content-intro">{t.description}</p>
+      <main className="treatment-detail-page">
+        <PageBanner
+          title={breadcrumbTitle}
+          items={[
+            { label: 'HOME', href: '/' },
+            { label: 'TREATMENTS', href: '/treatments' },
+            { label: breadcrumbTitle },
+          ]}
+        />
+        <div className="treatment-detail-inner">
+          <div className="treatment-detail-content-grid">
+            <article className="treatment-detail-article">
+              <h1 className="treatment-detail-title">{t.h1}</h1>
+              <p className="treatment-detail-lead">{t.description}</p>
 
-            <h2 className="about-content-heading">Why homoeopathy for this condition?</h2>
-            <p className="about-content-intro">
-              At {CLINIC.name}, we use constitutional homoeopathy to address the root cause, not just symptoms. Treatment is personalized, gentle and suitable for all ages. We are based in Melattur, Malappuram district, Kerala.
-            </p>
+              <section className="treatment-detail-section">
+                <h2 className="treatment-detail-heading">Why homoeopathy for this condition?</h2>
+                <p className="treatment-detail-text">
+                  At {CLINIC.name}, we use constitutional homoeopathy to address the root cause, not just symptoms. Treatment is personalized, gentle and suitable for all ages. We are based in Melattur, Malappuram district, Kerala. In-clinic and online consultation is also available.
+                </p>
+              </section>
 
-            <h3 className="about-content-heading" style={{ fontSize: '1.1rem' }}>Book a consultation</h3>
-            <p className="about-content-intro">
-              To discuss your case or book an appointment, call us at{' '}
-              <a href="tel:+917356736929">{CLINIC.phone}</a> or message on WhatsApp.
-            </p>
-            <a href="https://wa.me/917356736929" target="_blank" rel="noopener noreferrer" className="btn btn-teal" style={{ marginTop: '0.5rem' }}>
-              Book Appointment via WhatsApp
-            </a>
+              <section className="treatment-detail-section">
+                <h2 className="treatment-detail-heading">Our approach</h2>
+                <p className="treatment-detail-text">
+                  We focus on understanding your complete health picture. Homoeopathic treatment is gentle, with minimal or no side effects, and can be used for all age groups. Book an in-clinic visit or an online consultation at your convenience.
+                </p>
+              </section>
 
-            <nav aria-label="Related treatments" style={{ marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid #e2e8f0' }}>
-              <h2 className="about-content-heading">Other treatments we offer</h2>
-              <ul className="footer-links" style={{ listStyle: 'none', padding: 0, display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '0.75rem' }}>
-                {otherSlugs.map((s) => (
-                  <li key={s}>
-                    <Link href={`/treatments/${s}`} style={{ padding: '0.35rem 0.75rem', background: 'var(--color-teal)', color: '#fff', borderRadius: 6, textDecoration: 'none', fontSize: '0.9rem' }}>
-                      {TREATMENTS[s].h1.replace(' with Homeopathy in Melattur', '').replace(' in Malappuram & Melattur', '').replace(' & Knee Pain Treatment with Homeopathy in Melattur', '')}
+              <section className="treatment-detail-cta-block">
+                <h2 className="treatment-detail-heading">Book a consultation</h2>
+                <p className="treatment-detail-text">
+                  Call us at <a href={`tel:${CLINIC.phone.replace(/\s/g, '')}`}>{CLINIC.phone}</a> or message on WhatsApp. Online consultation is also available.
+                </p>
+                <a href="https://wa.me/917356736929" target="_blank" rel="noopener noreferrer" className="btn btn-teal treatment-detail-btn">
+                  Book Appointment via WhatsApp
+                </a>
+              </section>
+
+              <nav className="treatment-detail-related" aria-label="Related treatments">
+                <h2 className="treatment-detail-heading">Other treatments we offer</h2>
+                <ul className="treatment-detail-links">
+                  {otherSlugs.map((s) => (
+                    <li key={s}>
+                      <Link href={`/treatments/${s}`} className="treatment-detail-link-pill">
+                        {treatmentTitleShort(TREATMENTS[s].h1)}
+                      </Link>
+                    </li>
+                  ))}
+                  <li>
+                    <Link href="/treatments" className="treatment-detail-link-pill treatment-detail-link-all">
+                      All treatments
                     </Link>
                   </li>
-                ))}
-                <li>
-                  <Link href="/treatments" style={{ padding: '0.35rem 0.75rem', background: '#e2e8f0', color: 'var(--color-text)', borderRadius: 6, textDecoration: 'none', fontSize: '0.9rem' }}>
-                    All treatments
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-          </article>
+                </ul>
+              </nav>
+            </article>
+
+            <aside className="treatment-detail-sidebar">
+              <div className="treatment-detail-sidebar-card">
+                {img ? (
+                  <>
+                    <div className="treatment-detail-sidebar-image">
+                      <Image src={img} alt="" width={200} height={200} />
+                    </div>
+                    <p className="treatment-detail-sidebar-text">{treatmentTitleShort(t.h1)}</p>
+                  </>
+                ) : (
+                  <p className="treatment-detail-sidebar-text">Book a consultation</p>
+                )}
+                <a href="https://wa.me/917356736929" target="_blank" rel="noopener noreferrer" className="btn btn-teal treatment-detail-sidebar-btn">
+                  Book via WhatsApp
+                </a>
+              </div>
+            </aside>
+          </div>
         </div>
       </main>
       <Footer />
