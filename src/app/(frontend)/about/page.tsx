@@ -5,9 +5,19 @@ import Footer from '../Footer'
 import ExpertiseSection from '../ExpertiseSection'
 import '../styles.css'
 
+import { canonical, buildMetaDescription } from '@/lib/seo'
+
 export const metadata = {
-  title: "About Us | Dr. Naseeha's Homoeopathic Clinic",
-  description: "Experience a gentler way to wellness. Personalized homoeopathic care, side-effect free natural solutions for the entire family. From infants to old age.",
+  title: 'About Us – Homoeopathic Clinic Melattur',
+  description: buildMetaDescription(
+    "About Dr. Naseeha's Homoeopathic Clinic, Melattur. Personalized homoeopathic care, side-effect free natural solutions for the entire family. Malappuram, Kerala."
+  ),
+  keywords: ['about homoeopathic clinic Melattur', 'Dr. Naseeha clinic about', 'homeopathy clinic Malappuram Kerala'],
+  openGraph: {
+    title: 'About Us | Dr. Naseeha\'s Homoeopathic Clinic, Melattur',
+    url: canonical('/about'),
+  },
+  alternates: { canonical: canonical('/about') },
 }
 
 const WHY_CHOOSE = [

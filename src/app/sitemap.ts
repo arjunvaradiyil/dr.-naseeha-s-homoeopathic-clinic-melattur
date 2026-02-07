@@ -1,0 +1,36 @@
+import { MetadataRoute } from 'next'
+import { SITE_URL, TREATMENT_SLUGS } from '@/lib/seo'
+
+const STATIC_PATHS = [
+  '',
+  '/about',
+  '/about-doctor',
+  '/treatments',
+  '/book-appointment',
+  '/blog',
+  '/contact',
+  '/patient-stories',
+  '/awareness-videos',
+]
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const base = SITE_URL.replace(/\/$/, '')
+  const lastModified = new Date()
+
+  const entries: MetadataRoute.Sitemap = [
+    ...STATIC_PATHS.map((path) => ({
+      url: `${base}${path || '/'}`,
+      lastModified,
+      changeFrequency: path === '' ? 'weekly' as const : (path === '/blog' ? 'weekly' as const : 'monthly' as const),
+      priority: path === '' ? 1 : (path === '/contact' || path === '/book-appointment' ? 0.9 : 0.8),
+    })),
+    ...TREATMENT_SLUGS.map((slug) => ({
+      url: `${base}/treatments/${slug}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
+  ]
+
+  return entries
+}

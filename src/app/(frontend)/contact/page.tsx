@@ -1,11 +1,21 @@
 import Header from '../Header'
 import Footer from '../Footer'
-import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa'
+import { FaMapMarkerAlt, FaMobileAlt, FaEnvelope } from 'react-icons/fa'
+import { canonical, buildMetaDescription } from '@/lib/seo'
 import '../styles.css'
 
 export const metadata = {
-  title: "Contact | Dr. Naseeha's Homoeopathic Clinic",
-  description: "Get in touch with Dr. Naseeha's Homoeopathic Clinic, Melattur. Address, phone, email and contact form.",
+  title: 'Contact – Homoeopathic Clinic Melattur, Kerala',
+  description: buildMetaDescription(
+    "Contact Dr. Naseeha's Homoeopathic Clinic, Melattur. Address, phone +91 73567 36929, email and map. Book appointment in Malappuram, Kerala."
+  ),
+  keywords: ['contact Dr. Naseeha Melattur', 'homoeopathic clinic contact Malappuram', 'clinic address Melattur Kerala'],
+  openGraph: {
+    title: 'Contact | Dr. Naseeha\'s Homoeopathic Clinic, Melattur',
+    description: 'Get in touch. Address, phone, email and contact form. Melattur, Malappuram, Kerala.',
+    url: canonical('/contact'),
+  },
+  alternates: { canonical: canonical('/contact') },
 }
 
 export default function ContactPage() {
@@ -30,7 +40,7 @@ export default function ContactPage() {
             </div>
             <div className="contact-card">
               <span className="contact-card-icon" aria-hidden>
-                <FaPhone size={20} />
+                <FaMobileAlt size={20} />
               </span>
               <h3 className="contact-card-heading">Contact Us</h3>
               <p className="contact-card-text">

@@ -14,7 +14,7 @@ const EXPERTISE_ITEMS = [
   { label: 'Uric Acid', slug: 'uric-acid', src: '/uricacidf.png', summary: 'Management of raised uric acid and gout. Reduce flare-ups and support joint health with natural remedies.' },
   { label: 'Knee Pain', slug: 'knee-pain', src: '/kenpain.png', summary: 'Relief for knee pain, stiffness and arthritis. Ease discomfort and improve mobility without harsh drugs.' },
   { label: 'Back Pain', slug: 'back-pain', src: '/backpain.png', summary: 'Care for acute and chronic back pain. Address muscle, disc and postural issues with personalized treatment.' },
-  { label: 'Thyroid', slug: 'thyroid', src: '/expertise/thyroid.png', summary: 'Support for hypo and hyperthyroid conditions. Balance energy, weight and mood with homoeopathic care.' },
+  { label: 'Thyroid', slug: 'thyroid', src: '/tyroid.png', summary: 'Support for hypo and hyperthyroid conditions. Balance energy, weight and mood with homoeopathic care.' },
 ]
 
 const MARQUEE_SPEED = 1.2

@@ -16,10 +16,12 @@ export default function Footer() {
             <h3 className="footer-heading">Quick Links</h3>
             <ul className="footer-links">
               <li><Link href="/about">About Us</Link></li>
-              <li><Link href="/#services">Treatments</Link></li>
-              <li><a href="https://wa.me/917356736929" target="_blank" rel="noopener noreferrer">Book Appointment</a></li>
+              <li><Link href="/about-doctor">About Doctor</Link></li>
+              <li><Link href="/treatments">Treatments</Link></li>
+              <li><Link href="/book-appointment">Book Appointment</Link></li>
               <li><Link href="/patient-stories">Patient Stories</Link></li>
               <li><Link href="/awareness-videos">Awareness Videos</Link></li>
+              <li><Link href="/blog">Health Tips</Link></li>
               <li><Link href="/contact">Contact</Link></li>
             </ul>
           </div>
@@ -32,7 +34,8 @@ export default function Footer() {
             <ul className="footer-links">
               <li><Link href="/patient-stories">Patient Stories</Link></li>
               <li><Link href="/awareness-videos">Awareness Videos</Link></li>
-              <li><a href="https://wa.me/917356736929" target="_blank" rel="noopener noreferrer">Book Appointment</a></li>
+              <li><Link href="/book-appointment">Book Appointment</Link></li>
+              <li><Link href="/blog">Health Tips</Link></li>
               <li><Link href="/contact">Contact</Link></li>
             </ul>
           </div>

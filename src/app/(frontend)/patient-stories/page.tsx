@@ -3,9 +3,19 @@ import Header from '../Header'
 import Footer from '../Footer'
 import '../styles.css'
 
+import { canonical, buildMetaDescription } from '@/lib/seo'
+
 export const metadata = {
-  title: "Patient Stories | Dr. Naseeha's Homoeopathic Clinic",
-  description: "Read what our patients say about their experience at Dr. Naseeha's Homoeopathic Clinic, Melattur.",
+  title: 'Patient Stories – Homoeopathic Clinic Melattur',
+  description: buildMetaDescription(
+    "Patient reviews and success stories at Dr. Naseeha's Homoeopathic Clinic, Melattur. Read what our patients say about homoeopathic treatment in Kerala."
+  ),
+  keywords: ['patient stories Dr. Naseeha Melattur', 'homoeopathy reviews Malappuram', 'clinic reviews Kerala'],
+  openGraph: {
+    title: 'Patient Stories | Dr. Naseeha\'s Homoeopathic Clinic',
+    url: canonical('/patient-stories'),
+  },
+  alternates: { canonical: canonical('/patient-stories') },
 }
 
 const STORIES = [

@@ -5,10 +5,12 @@ import { useState, useCallback, useEffect } from 'react'
 
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
-  { href: '/#services', label: 'Treatments' },
+  { href: '/treatments', label: 'Treatments' },
+  { href: '/about-doctor', label: 'About Doctor' },
   { href: '/about', label: 'About Us' },
   { href: '/patient-stories', label: 'Patient Stories' },
   { href: '/awareness-videos', label: 'Awareness Videos' },
+  { href: '/blog', label: 'Health Tips' },
   { href: '/contact', label: 'Contact' },
 ]
 

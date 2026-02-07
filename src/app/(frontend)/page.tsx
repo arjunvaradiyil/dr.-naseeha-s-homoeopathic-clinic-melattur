@@ -6,7 +6,23 @@ import ExpertiseSection from './ExpertiseSection'
 import PatientStoriesSection from './PatientStoriesSection'
 import ResultsSection from './ResultsSection'
 import ParallaxLayer from './ParallaxLayer'
+import { CLINIC } from '@/lib/seo'
+import { canonical, buildMetaDescription } from '@/lib/seo'
 import './styles.css'
+
+export const metadata = {
+  title: `Homoeopathic Clinic Melattur | ${CLINIC.name} – Kerala`,
+  description: buildMetaDescription(
+    'Homoeopathic clinic in Melattur, Kerala. Personalized care for skin, allergy, PCOD, thyroid, migraine and more. Book appointment. Dr. Naseeha\'s Homoeopathic Clinic.'
+  ),
+  keywords: ['homeopathy clinic in Melattur', 'homoeopathic doctor Melattur', 'homeopathy Malappuram', 'homoeopathy Kerala', CLINIC.name],
+  openGraph: {
+    title: `${CLINIC.name} | Homoeopathic Clinic Melattur, Kerala`,
+    description: 'Personalized homoeopathic care for the family. Skin, allergy, PCOD, thyroid and more. Book in Melattur.',
+    url: canonical('/'),
+  },
+  alternates: { canonical: canonical('/') },
+}
 
 export default function HomePage() {
   return (
@@ -34,7 +50,6 @@ export default function HomePage() {
               <p className="hero-desc">
                 Every patient is unique. We offer personalized, side-effect free homoeopathic care for the whole family—from infants to old age—so you can regain vitality and balance through time-tested, natural solutions.
               </p>
-              <p className="hero-whatsapp-hint">You&apos;ll be redirected to WhatsApp to message us.</p>
               <a href="https://wa.me/917356736929?text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Dr.%20Naseeha's%20Homoeopathic%20Clinic." target="_blank" rel="noopener noreferrer" className="btn btn-teal btn-hero-cta">Book Appointment</a>
             </div>
           </div>
@@ -77,8 +92,7 @@ export default function HomePage() {
               <p className="know-us-text">
                 Our mission is to provide side-effect free, natural solutions for the entire family. From infants to old age, we help our patients regain their vitality and balance through the time-tested science of homoeopathy.
               </p>
-              <p className="know-us-whatsapp-hint">You&apos;ll be redirected to WhatsApp to connect with us.</p>
-              <a href="https://wa.me/917356736929?text=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20Dr.%20Naseeha's%20Homoeopathic%20Clinic." target="_blank" rel="noopener noreferrer" className="btn btn-teal know-us-btn">VIEW MORE</a>
+              <Link href="/about" className="btn btn-teal know-us-btn">VIEW MORE</Link>
             </div>
             {/* Right column: image on large screens only */}
             <div className="know-us-col know-us-col-image">
