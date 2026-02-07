@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="site-footer" id="contact">
       <div className="footer-top-bar">
         <p className="footer-top-text">
-          <span className="footer-top-text-inner">Skin &amp; Allergy / Gynaecology / PCOD / Migraine / Hair Loss / Diabetes / Thyroid / Knee &amp; Back Pain / Uric Acid / Homoeopathy</span>
+          <span className="footer-top-text-inner">Allergy  &amp; / Skin  / Gynaecology / PCOD / Migraine / Hair Loss / Diabetes / Thyroid / Knee &amp; Back Pain / Uric Acid / Homoeopathy</span>
           <span className="footer-top-text-inner" aria-hidden>Skin &amp; Allergy / Gynaecology / PCOD / Migraine / Hair Loss / Diabetes / Thyroid / Knee &amp; Back Pain / Uric Acid / Homoeopathy</span>
         </p>
       </div>
