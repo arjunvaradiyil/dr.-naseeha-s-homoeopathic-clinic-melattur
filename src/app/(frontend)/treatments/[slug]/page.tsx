@@ -468,22 +468,32 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
                 </a>
               </footer>
 
-              <nav className="treatment-related" aria-label="Related treatments">
+              <nav className="treatment-related treatment-related-grid-wrap" aria-label="Related treatments">
                 <h2 className="blog-post-heading">Other treatments we offer</h2>
-                <ul className="treatment-related-links">
-                  {otherSlugs.map((s) => (
-                    <li key={s}>
-                      <Link href={`/treatments/${s}`} className="treatment-link-pill">
-                        {treatmentTitleShort(TREATMENTS[s].h1)}
+                <div className="treatment-related-grid">
+                  {otherSlugs.map((s) => {
+                    const imgSrc = TREATMENT_IMAGES[s]
+                    const label = treatmentTitleShort(TREATMENTS[s].h1)
+                    return (
+                      <Link key={s} href={`/treatments/${s}`} className="treatment-related-circle">
+                        <span className="treatment-related-circle-icon">
+                          {imgSrc ? (
+                            <Image src={imgSrc} alt="" width={48} height={48} />
+                          ) : (
+                            <span className="treatment-related-circle-placeholder">{label.charAt(0)}</span>
+                          )}
+                        </span>
+                        <span className="treatment-related-circle-label">{label}</span>
                       </Link>
-                    </li>
-                  ))}
-                  <li>
-                    <Link href="/treatments" className="treatment-link-pill treatment-link-all">
-                      All treatments
-                    </Link>
-                  </li>
-                </ul>
+                    )
+                  })}
+                  <Link href="/treatments" className="treatment-related-circle treatment-related-circle-all">
+                    <span className="treatment-related-circle-icon">
+                      <span className="treatment-related-circle-placeholder">All</span>
+                    </span>
+                    <span className="treatment-related-circle-label">All treatments</span>
+                  </Link>
+                </div>
               </nav>
             </div>
           </div>
