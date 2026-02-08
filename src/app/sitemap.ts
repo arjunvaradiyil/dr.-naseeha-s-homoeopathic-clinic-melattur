@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { SITE_URL, TREATMENT_SLUGS } from '@/lib/seo'
+import { BLOG_SLUGS } from '@/app/(frontend)/blog/blog-posts'
 
 const STATIC_PATHS = [
   '',
@@ -29,6 +30,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
+    })),
+    ...BLOG_SLUGS.map((slug) => ({
+      url: `${base}/blog/${slug}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
     })),
   ]
 

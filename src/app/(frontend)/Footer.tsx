@@ -21,7 +21,7 @@ export default function Footer() {
               <li><Link href="/book-appointment">Book Appointment</Link></li>
               <li><Link href="/patient-stories">Patient Stories</Link></li>
               <li><Link href="/awareness-videos">Awareness Videos</Link></li>
-              <li><Link href="/blog">Health Tips</Link></li>
+              <li><Link href="/blog">Blog</Link></li>
               <li><Link href="/contact">Contact</Link></li>
             </ul>
           </div>
@@ -35,7 +35,7 @@ export default function Footer() {
               <li><Link href="/patient-stories">Patient Stories</Link></li>
               <li><Link href="/awareness-videos">Awareness Videos</Link></li>
               <li><Link href="/book-appointment">Book Appointment</Link></li>
-              <li><Link href="/blog">Health Tips</Link></li>
+              <li><Link href="/blog">Blog</Link></li>
               <li><Link href="/contact">Contact</Link></li>
             </ul>
           </div>

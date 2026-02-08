@@ -9,6 +9,7 @@ import '../styles.css'
 const TREATMENT_IMAGES: Record<string, string> = {
   skin: '/skilltreatments.png',
   allergy: '/allergy_icon_no_bg.png',
+  asthma: '/allergy_icon_no_bg.png',
   pcod: '/pcod.png',
   gynaecology: '/GYNAECOLOGY.png',
   migraine: '/migraine.png',

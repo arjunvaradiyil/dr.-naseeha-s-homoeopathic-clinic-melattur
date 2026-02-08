@@ -47,6 +47,7 @@ export const LOCAL_KEYWORDS = [
 export const TREATMENT_SLUGS = [
   "skin",
   "allergy",
+  "asthma",
   "pcod",
   "gynaecology",
   "migraine",
@@ -81,6 +82,13 @@ export const TREATMENTS: Record<TreatmentSlug, TreatmentMeta> = {
     description: "Constitutional allergy treatment in Melattur—seasonal, food, environmental. Long-term relief with homoeopathy. Dr. Naseeha's Homoeopathic Clinic, Malappuram.",
     h1: "Allergy Treatment with Homeopathy in Melattur",
     keywords: ["allergy treatment homeopathy Melattur", "allergy homeopathy Malappuram", "allergic rhinitis homeopathy Kerala"],
+  },
+  asthma: {
+    slug: "asthma",
+    title: "Asthma Treatment Homeopathy Melattur",
+    description: "Homoeopathic care for asthma in Melattur—natural support for airway inflammation, wheezing, breathlessness. Root-cause approach. Dr. Naseeha's Homoeopathic Clinic, Kerala.",
+    h1: "Asthma Treatment with Homeopathy in Melattur",
+    keywords: ["asthma treatment homeopathy Melattur", "homeopathy for asthma Kerala", "asthma homeopathy Malappuram", "Homeo treatment for asthma"],
   },
   pcod: {
     slug: "pcod",

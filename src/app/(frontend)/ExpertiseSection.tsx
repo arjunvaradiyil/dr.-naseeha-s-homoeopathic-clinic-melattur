@@ -7,6 +7,7 @@ import { useRef, useEffect, useCallback } from 'react'
 const EXPERTISE_ITEMS = [
   { label: 'Skin Treatments', slug: 'skin', pageSlug: 'skin', src: '/skilltreatments.png', summary: 'Natural remedies for acne, eczema, pigmentation and other skin concerns.' },
   { label: 'Allergy', slug: 'allergy', pageSlug: 'allergy', src: '/allergy_icon_no_bg.png', summary: 'Constitutional treatment for seasonal, food and environmental allergies.' },
+  { label: 'Asthma', slug: 'asthma', pageSlug: 'asthma', src: '/allergy_icon_no_bg.png', summary: 'Natural support for asthma—root-cause care to reduce attacks and improve breathing.' },
   { label: 'PCOD', slug: 'pcod', pageSlug: 'pcod', src: '/pcod.png', summary: 'Holistic homoeopathic care for hormonal balance and irregular cycles.' },
   { label: 'Gynaecology', slug: 'gynaecology', pageSlug: 'gynaecology', src: '/GYNAECOLOGY.png', summary: 'Care for menstrual disorders, fertility and women\'s health.' },
   { label: 'Migraine', slug: 'migraine', pageSlug: 'migraine', src: '/migraine.png', summary: 'Targeted relief for migraine and chronic headaches.' },

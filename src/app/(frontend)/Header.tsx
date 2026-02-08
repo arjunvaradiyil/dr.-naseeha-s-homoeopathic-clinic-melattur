@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { href: '/about', label: 'About Us' },
   { href: '/patient-stories', label: 'Patient Stories' },
   { href: '/awareness-videos', label: 'Awareness Videos' },
-  { href: '/blog', label: 'Health Tips' },
+  { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Contact' },
 ]
 
