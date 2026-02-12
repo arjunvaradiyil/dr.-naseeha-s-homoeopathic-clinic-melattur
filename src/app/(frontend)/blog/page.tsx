@@ -71,7 +71,7 @@ const GRID_ITEMS = [
     category: 'Clinic',
     title: 'Meet Dr. Naseeha',
     excerpt: 'Personalized homoeopathic care for the entire family in Melattur, Kerala.',
-    slug: '/about-doctor',
+    slug: '/about',
     image: '/Naeesha.jpeg',
     author: CLINIC.name,
     publishedAt: '2026-02-08',

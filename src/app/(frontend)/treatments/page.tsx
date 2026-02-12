@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Header from '../Header'
 import Footer from '../Footer'
 import PageBanner from '../PageBanner'
+import ResultsSection from '../ResultsSection'
 import { TREATMENT_SLUGS, TREATMENTS, CLINIC, canonical, buildMetaDescription } from '@/lib/seo'
 import '../styles.css'
 
@@ -76,6 +77,8 @@ export default function TreatmentsIndexPage() {
               <a href="https://wa.me/917356736929" target="_blank" rel="noopener noreferrer" className="btn btn-teal">Book Appointment via WhatsApp</a>
             </div>
           </section>
+
+          <ResultsSection />
         </div>
       </main>
       <Footer />

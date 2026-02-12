@@ -1,6 +1,7 @@
 import React from 'react'
 import { CLINIC } from '@/lib/seo'
 import { ClinicSchema } from './JsonLd'
+import WhatsAppFab from './WhatsAppFab'
 import './styles.css'
 
 export const metadata = {
@@ -18,6 +19,7 @@ export default async function FrontendLayout(props: { children: React.ReactNode 
     <div id="app">
       <ClinicSchema />
       {children}
+      <WhatsAppFab />
     </div>
   )
 }

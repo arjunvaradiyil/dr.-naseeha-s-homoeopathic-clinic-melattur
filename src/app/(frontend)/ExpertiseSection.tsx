@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRef, useEffect, useCallback } from 'react'
 
 /** pageSlug: used for /treatments/[slug] link; omit for WhatsApp-only */
@@ -25,7 +26,7 @@ function Card({ label, pageSlug, src, summary }: { label: string; pageSlug?: str
   const content = (
     <>
       <span className="expertise-card-icon">
-        <img src={src} alt="" width={80} height={80} className="expertise-card-img" />
+        <Image src={src} alt="" width={80} height={80} className="expertise-card-img" unoptimized={false} />
       </span>
       <h3 className="expertise-card-title">{label}</h3>
       <p className="expertise-card-summary">{summary}</p>
@@ -119,7 +120,7 @@ export default function ExpertiseSection({ title = 'Areas of Expertise', subtitl
           </div>
         </div>
         <div className="expertise-footer">
-          <Link href="/treatments" className="btn btn-teal">View all treatments</Link>
+          <Link href="/treatments" className="btn btn-teal">View all</Link>
           <div className="expertise-nav">
             <button type="button" className="expertise-nav-btn" onClick={() => scroll('left')} aria-label="Scroll left">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>

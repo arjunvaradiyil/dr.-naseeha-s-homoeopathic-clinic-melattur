@@ -5,13 +5,14 @@ import { BLOG_SLUGS } from '@/app/(frontend)/blog/blog-posts'
 const STATIC_PATHS = [
   '',
   '/about',
-  '/about-doctor',
   '/treatments',
   '/book-appointment',
   '/blog',
   '/contact',
   '/patient-stories',
   '/awareness-videos',
+  '/privacy',
+  '/terms',
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

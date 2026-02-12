@@ -7,6 +7,24 @@ export function ClinicSchema() {
     '@context': 'https://schema.org',
     '@graph': [
       {
+        '@type': 'WebSite',
+        '@id': `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: name,
+        description: description,
+        inLanguage: 'en-IN',
+        publisher: { '@id': `${SITE_URL}/#clinic` },
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${SITE_URL}/#webpage`,
+        url: SITE_URL,
+        name: `${name} – Homoeopathic Clinic Melattur, Kerala`,
+        description: description,
+        isPartOf: { '@id': `${SITE_URL}/#website` },
+        about: { '@id': `${SITE_URL}/#clinic` },
+      },
+      {
         '@type': 'MedicalClinic',
         '@id': `${SITE_URL}/#clinic`,
         name: name,
@@ -41,7 +59,7 @@ export function ClinicSchema() {
         name: 'Dr. Naseeha',
         jobTitle: 'Homoeopathic Doctor',
         worksFor: { '@id': `${SITE_URL}/#clinic` },
-        url: `${SITE_URL}/about-doctor`,
+        url: `${SITE_URL}/about`,
         medicalSpecialty: 'Homoeopathy',
         address: {
           '@type': 'PostalAddress',

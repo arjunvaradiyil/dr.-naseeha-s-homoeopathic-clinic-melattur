@@ -16,7 +16,6 @@ export default function Footer() {
             <h3 className="footer-heading">Quick Links</h3>
             <ul className="footer-links">
               <li><Link href="/about">About Us</Link></li>
-              <li><Link href="/about-doctor">About Doctor</Link></li>
               <li><Link href="/treatments">Treatments</Link></li>
               <li><Link href="/book-appointment">Book Appointment</Link></li>
               <li><Link href="/patient-stories">Patient Stories</Link></li>
@@ -63,9 +62,9 @@ export default function Footer() {
         <p className="footer-copyright">
           Copyright © Dr. Naseeha&apos;s Homoeopathic Clinic — All Rights Reserved.
           <span className="footer-sep">|</span>
-          <Link href="#">Privacy Policy</Link>
+          <Link href="/privacy">Privacy Policy</Link>
           <span className="footer-sep">|</span>
-          <Link href="#">Terms of Use</Link>
+          <Link href="/terms">Terms of Use</Link>
         </p>
         <p className="footer-developed">
           Developed by <a href="https://arjunvaradiyil.in" target="_blank" rel="noopener noreferrer">Arjun Varadiyil</a>

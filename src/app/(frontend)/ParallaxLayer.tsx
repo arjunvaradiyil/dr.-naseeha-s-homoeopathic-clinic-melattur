@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 type ParallaxLayerProps = {
   children: React.ReactNode
@@ -12,17 +12,26 @@ type ParallaxLayerProps = {
 export default function ParallaxLayer({ children, speed = 0.45, className = '' }: ParallaxLayerProps) {
   const [translateY, setTranslateY] = useState(0)
   const [scale, setScale] = useState(1)
+  const rafRef = useRef<number>(0)
+  const tickingRef = useRef(false)
 
   useEffect(() => {
     const onScroll = () => {
-      const sy = window.scrollY
-      setTranslateY(sy * speed)
-      // Slight scale so no gap shows when video lags on scroll
-      setScale(1 + Math.min(sy / 3500, 0.12))
+      if (tickingRef.current) return
+      tickingRef.current = true
+      rafRef.current = requestAnimationFrame(() => {
+        const sy = window.scrollY
+        setTranslateY(sy * speed)
+        setScale(1 + Math.min(sy / 3500, 0.12))
+        tickingRef.current = false
+      })
     }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+    }
   }, [speed])
 
   return (

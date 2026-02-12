@@ -14,6 +14,7 @@ export const metadata = {
   keywords: ['patient stories Dr. Naseeha Melattur', 'homoeopathy reviews Malappuram', 'clinic reviews Kerala'],
   openGraph: {
     title: 'Patient Stories | Dr. Naseeha\'s Homoeopathic Clinic',
+    description: 'Patient reviews and success stories at Dr. Naseeha\'s Homoeopathic Clinic, Melattur. Homoeopathic treatment reviews, Kerala.',
     url: canonical('/patient-stories'),
   },
   alternates: { canonical: canonical('/patient-stories') },

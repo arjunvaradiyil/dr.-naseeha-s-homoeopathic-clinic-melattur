@@ -6,7 +6,6 @@ import { useState, useCallback, useEffect } from 'react'
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
   { href: '/treatments', label: 'Treatments' },
-  { href: '/about-doctor', label: 'About Doctor' },
   { href: '/about', label: 'About Us' },
   { href: '/patient-stories', label: 'Patient Stories' },
   { href: '/awareness-videos', label: 'Awareness Videos' },

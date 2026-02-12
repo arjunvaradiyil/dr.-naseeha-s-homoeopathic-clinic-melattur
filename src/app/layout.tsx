@@ -5,13 +5,14 @@ export const viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
+  themeColor: '#0d9488',
 }
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${CLINIC.name} | Homoeopathic Clinic Melattur, Kerala`,
-    template: `%s | ${CLINIC.name}`,
+    default: `Homoeopathic Clinic Melattur | ${CLINIC.nameShort}`,
+    template: `%s | ${CLINIC.nameShort}`,
   },
   description: CLINIC.description,
   keywords: ['homeopathy clinic Melattur', 'homoeopathic doctor Malappuram', 'homoeopathy Kerala', CLINIC.name],

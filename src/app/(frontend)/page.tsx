@@ -4,14 +4,13 @@ import Header from './Header'
 import Footer from './Footer'
 import ExpertiseSection from './ExpertiseSection'
 import PatientStoriesSection from './PatientStoriesSection'
-import ResultsSection from './ResultsSection'
 import ParallaxLayer from './ParallaxLayer'
 import { CLINIC } from '@/lib/seo'
 import { canonical, buildMetaDescription } from '@/lib/seo'
 import './styles.css'
 
 export const metadata = {
-  title: `Homoeopathic Clinic Melattur | ${CLINIC.name} – Kerala`,
+  title: 'Homoeopathic Clinic Melattur – Kerala',
   description: buildMetaDescription(
     'Homoeopathic clinic in Melattur, Kerala. Personalized care for skin, allergy, PCOD, thyroid, migraine and more. Book appointment. Dr. Naseeha\'s Homoeopathic Clinic.'
   ),
@@ -120,44 +119,6 @@ export default function HomePage() {
 
         {/* Patient Stories - one review at a time, marquee auto-rotate */}
         <PatientStoriesSection />
-
-        {/* Review Videos - play on website */}
-        <section className="review-videos-home" aria-labelledby="review-videos-home-heading">
-          <div className="review-videos-home-inner">
-            <h2 id="review-videos-home-heading" className="review-videos-home-title">Review Videos</h2>
-            <p className="review-videos-home-subtitle">Watch what our patients say</p>
-            <div className="review-videos-embed-grid">
-              <div className="review-video-embed-card">
-                <div className="review-video-embed-wrap">
-                  <iframe
-                    src="https://www.youtube.com/embed/vIyEdGQJOkY"
-                    title="Patient Review 1"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    className="review-video-embed-iframe"
-                  />
-                </div>
-                <p className="videos-card-title">Patient Review 1</p>
-              </div>
-              <div className="review-video-embed-card">
-                <div className="review-video-embed-wrap">
-                  <iframe
-                    src="https://www.youtube.com/embed/NmBK2rEjbaA"
-                    title="Patient Review 2"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    className="review-video-embed-iframe"
-                  />
-                </div>
-                <p className="videos-card-title">Patient Review 2</p>
-              </div>
-            </div>
-            <Link href="/patient-stories#review-videos-heading" className="btn btn-teal review-videos-home-btn">View all Patient Stories</Link>
-          </div>
-        </section>
-
-        {/* Treatment Results - images from public/RESULTS */}
-        <ResultsSection />
       </main>
       <Footer />
     </>

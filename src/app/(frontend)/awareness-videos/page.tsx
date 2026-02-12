@@ -14,6 +14,7 @@ export const metadata = {
   keywords: ['homoeopathy awareness videos Melattur', 'health tips Dr. Naseeha', 'homoeopathy videos Kerala'],
   openGraph: {
     title: 'Awareness Videos | Dr. Naseeha\'s Homoeopathic Clinic',
+    description: 'Health awareness and homoeopathy videos from Dr. Naseeha\'s Homoeopathic Clinic, Melattur. Wellness tips, Kerala.',
     url: canonical('/awareness-videos'),
   },
   alternates: { canonical: canonical('/awareness-videos') },
