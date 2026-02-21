@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { FaUser } from 'react-icons/fa'
 import Header from '../../Header'
 import Footer from '../../Footer'
 import PageBanner from '../../PageBanner'
@@ -229,56 +228,56 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
   const img = TREATMENT_IMAGES[validSlug]
   const otherSlugs = TREATMENT_SLUGS.filter((s) => s !== validSlug).slice(0, 6)
 
-  const breadcrumbTitle = treatmentTitleShort(t.h1).toUpperCase()
-
+  const breadcrumbLabel = treatmentTitleShort(t.h1)
   const shortTitle = treatmentTitleShort(t.h1)
 
   return (
     <>
       <Header />
-      <main className="treatment-detail-page blog-post-page">
+      <main className="treatment-single-page">
         <PageBanner
-          title={breadcrumbTitle}
+          title="TREATMENTS"
           items={[
             { label: 'HOME', href: '/' },
             { label: 'TREATMENTS', href: '/treatments' },
-            { label: breadcrumbTitle },
+            { label: breadcrumbLabel },
           ]}
         />
-        <article className="blog-post-article-wrap">
-          <div className="blog-post-inner">
-            <header className="blog-post-header">
-              <span className="blog-post-category">Treatment</span>
-              <h1 className="blog-post-title">{shortTitle.toUpperCase()}</h1>
-              <div className="blog-post-meta">
-                <span className="blog-post-author-avatar" aria-hidden>
-                  <FaUser className="blog-post-author-icon" />
-                </span>
-                <span className="blog-post-author-text">{CLINIC.name}</span>
+
+        <article className="treatment-single-article">
+          {img ? (
+            <div className="treatment-single-hero">
+              <Image src={img} alt={shortTitle} fill sizes="100vw" priority className="treatment-single-hero-img" />
+              <div className="treatment-single-hero-overlay" aria-hidden />
+              <div className="treatment-single-hero-caption">
+                <span className="treatment-single-category">Treatment</span>
+                <h1 className="treatment-single-title">{shortTitle}</h1>
+                <p className="treatment-single-meta">{CLINIC.name}</p>
               </div>
+            </div>
+          ) : (
+            <header className="treatment-single-header">
+              <span className="treatment-single-category">Treatment</span>
+              <h1 className="treatment-single-title">{shortTitle}</h1>
+              <p className="treatment-single-meta">{CLINIC.name}</p>
             </header>
+          )}
 
-            {img && (
-              <div className="blog-post-featured-image">
-                <Image src={img} alt={shortTitle} fill sizes="(max-width: 900px) 100vw, 800px" priority />
-              </div>
-            )}
-
-            <div className="blog-post-article">
-              <div className="blog-post-body">
+          <div className="treatment-single-prose-wrap">
+          <div className="treatment-single-prose">
               {validSlug === 'allergy' ? (
                 <>
-                  <div className="blog-post-intro-block">
+                  <div className="treatment-single-intro-block">
                     {ALLERGY_DETAIL.intro.map((para, i) => (
-                      <p key={i} className="blog-post-p">
+                      <p key={i} className="treatment-single-p">
                         {para}
                       </p>
                     ))}
                   </div>
-                  <section className="treatment-section">
-                    <h2 className="blog-post-heading">{ALLERGY_DETAIL.symptoms.title}</h2>
-                    <p className="blog-post-p">{ALLERGY_DETAIL.symptoms.intro}</p>
-                    <ul className="blog-post-list">
+                  <section className="treatment-single-section">
+                    <h2 className="treatment-single-h2">{ALLERGY_DETAIL.symptoms.title}</h2>
+                    <p className="treatment-single-p">{ALLERGY_DETAIL.symptoms.intro}</p>
+                    <ul className="treatment-single-list">
                       {ALLERGY_DETAIL.symptoms.items.map((item, i) => (
                         <li key={i}>
                           <strong>{item.title}</strong>
@@ -288,19 +287,19 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
                       ))}
                     </ul>
                   </section>
-                  <section className="treatment-section">
-                    <h2 className="blog-post-heading">{ALLERGY_DETAIL.remedies.title}</h2>
-                    <p className="blog-post-p">{ALLERGY_DETAIL.remedies.intro}</p>
-                    <p className="blog-post-p">{ALLERGY_DETAIL.remedies.clinicIntro}</p>
-                    <ul className="blog-post-list">
+                  <section className="treatment-single-section">
+                    <h2 className="treatment-single-h2">{ALLERGY_DETAIL.remedies.title}</h2>
+                    <p className="treatment-single-p">{ALLERGY_DETAIL.remedies.intro}</p>
+                    <p className="treatment-single-p">{ALLERGY_DETAIL.remedies.clinicIntro}</p>
+                    <ul className="treatment-single-list">
                       {ALLERGY_DETAIL.remedies.bullets.map((bullet, i) => (
                         <li key={i}>{bullet}</li>
                       ))}
                     </ul>
                   </section>
-                  <section className="treatment-section">
-                    <h2 className="blog-post-heading">{ALLERGY_DETAIL.benefits.title}</h2>
-                    <ul className="blog-post-list">
+                  <section className="treatment-single-section">
+                    <h2 className="treatment-single-h2">{ALLERGY_DETAIL.benefits.title}</h2>
+                    <ul className="treatment-single-list">
                       {ALLERGY_DETAIL.benefits.items.map((item, i) => (
                         <li key={i}>{item}</li>
                       ))}
@@ -309,37 +308,37 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
                 </>
               ) : validSlug === 'pcod' ? (
                 <>
-                  <div className="blog-post-intro-block">
+                  <div className="treatment-single-intro-block">
                     {PCOD_DETAIL.intro.map((para, i) => (
-                      <p key={i} className="blog-post-p">
+                      <p key={i} className="treatment-single-p">
                         {para}
                       </p>
                     ))}
                   </div>
-                  <section className="treatment-section">
-                    <h2 className="blog-post-heading">{PCOD_DETAIL.causes.title}</h2>
-                    <p className="blog-post-p">{PCOD_DETAIL.causes.intro}</p>
-                    <ul className="blog-post-list">
+                  <section className="treatment-single-section">
+                    <h2 className="treatment-single-h2">{PCOD_DETAIL.causes.title}</h2>
+                    <p className="treatment-single-p">{PCOD_DETAIL.causes.intro}</p>
+                    <ul className="treatment-single-list">
                       {PCOD_DETAIL.causes.items.map((item, i) => (
                         <li key={i}>{item}</li>
                       ))}
                     </ul>
                   </section>
-                  <section className="treatment-section">
-                    <h2 className="blog-post-heading">{PCOD_DETAIL.symptoms.title}</h2>
-                    <ul className="blog-post-list">
+                  <section className="treatment-single-section">
+                    <h2 className="treatment-single-h2">{PCOD_DETAIL.symptoms.title}</h2>
+                    <ul className="treatment-single-list">
                       {PCOD_DETAIL.symptoms.items.map((item, i) => (
                         <li key={i}>{item}</li>
                       ))}
                     </ul>
                   </section>
-                  <section className="treatment-section">
-                    <h2 className="blog-post-heading">{PCOD_DETAIL.approach.title}</h2>
-                    <p className="blog-post-p">{PCOD_DETAIL.approach.text}</p>
+                  <section className="treatment-single-section">
+                    <h2 className="treatment-single-h2">{PCOD_DETAIL.approach.title}</h2>
+                    <p className="treatment-single-p">{PCOD_DETAIL.approach.text}</p>
                   </section>
-                  <section className="treatment-section">
-                    <h2 className="blog-post-heading">{PCOD_DETAIL.benefits.title}</h2>
-                    <ul className="blog-post-list">
+                  <section className="treatment-single-section">
+                    <h2 className="treatment-single-h2">{PCOD_DETAIL.benefits.title}</h2>
+                    <ul className="treatment-single-list">
                       {PCOD_DETAIL.benefits.items.map((item, i) => (
                         <li key={i}>{item}</li>
                       ))}
@@ -348,25 +347,25 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
                 </>
               ) : validSlug === 'hair-loss' ? (
                 <>
-                  <div className="blog-post-intro-block">
+                  <div className="treatment-single-intro-block">
                     {HAIR_LOSS_DETAIL.intro.map((para, i) => (
-                      <p key={i} className="blog-post-p">
+                      <p key={i} className="treatment-single-p">
                         {para}
                       </p>
                     ))}
                   </div>
-                  <section className="treatment-section">
-                    <h2 className="blog-post-heading">{HAIR_LOSS_DETAIL.whyChoose.title}</h2>
-                    <p className="blog-post-p">{HAIR_LOSS_DETAIL.whyChoose.intro}</p>
-                    <ul className="blog-post-list">
+                  <section className="treatment-single-section">
+                    <h2 className="treatment-single-h2">{HAIR_LOSS_DETAIL.whyChoose.title}</h2>
+                    <p className="treatment-single-p">{HAIR_LOSS_DETAIL.whyChoose.intro}</p>
+                    <ul className="treatment-single-list">
                       {HAIR_LOSS_DETAIL.whyChoose.items.map((item, i) => (
                         <li key={i}>{item}</li>
                       ))}
                     </ul>
                   </section>
-                  <section className="treatment-section">
-                    <h2 className="blog-post-heading">{HAIR_LOSS_DETAIL.approach.title}</h2>
-                    <ul className="blog-post-list">
+                  <section className="treatment-single-section">
+                    <h2 className="treatment-single-h2">{HAIR_LOSS_DETAIL.approach.title}</h2>
+                    <ul className="treatment-single-list">
                       {HAIR_LOSS_DETAIL.approach.items.map((item, i) => (
                         <li key={i}>{item}</li>
                       ))}
@@ -375,24 +374,24 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
                 </>
               ) : validSlug === 'migraine' ? (
                 <>
-                  <div className="blog-post-intro-block">
+                  <div className="treatment-single-intro-block">
                     {MIGRAINE_DETAIL.intro.map((para, i) => (
-                      <p key={i} className="blog-post-p">
+                      <p key={i} className="treatment-single-p">
                         {para}
                       </p>
                     ))}
                   </div>
-                  <section className="treatment-section">
-                    <h2 className="blog-post-heading">{MIGRAINE_DETAIL.triggers.title}</h2>
-                    <ul className="blog-post-list">
+                  <section className="treatment-single-section">
+                    <h2 className="treatment-single-h2">{MIGRAINE_DETAIL.triggers.title}</h2>
+                    <ul className="treatment-single-list">
                       {MIGRAINE_DETAIL.triggers.items.map((item, i) => (
                         <li key={i}>{item}</li>
                       ))}
                     </ul>
                   </section>
-                  <section className="treatment-section">
-                    <h2 className="blog-post-heading">{MIGRAINE_DETAIL.features.title}</h2>
-                    <ul className="blog-post-list">
+                  <section className="treatment-single-section">
+                    <h2 className="treatment-single-h2">{MIGRAINE_DETAIL.features.title}</h2>
+                    <ul className="treatment-single-list">
                       {MIGRAINE_DETAIL.features.items.map((item, i) => (
                         <li key={i}>
                           <strong>{item.title}:</strong> {item.text}
@@ -403,24 +402,24 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
                 </>
               ) : validSlug === 'gynaecology' ? (
                 <>
-                  <section className="treatment-section">
-                    <h2 className="blog-post-heading">{GYNAECOLOGY_DETAIL.section.title}</h2>
-                    <p className="blog-post-p">{GYNAECOLOGY_DETAIL.section.intro}</p>
+                  <section className="treatment-single-section">
+                    <h2 className="treatment-single-h2">{GYNAECOLOGY_DETAIL.section.title}</h2>
+                    <p className="treatment-single-p">{GYNAECOLOGY_DETAIL.section.intro}</p>
                   </section>
                 </>
               ) : validSlug === 'asthma' ? (
                 <>
-                  <div className="blog-post-intro-block">
+                  <div className="treatment-single-intro-block">
                     {ASTHMA_DETAIL.intro.map((para, i) => (
-                      <p key={i} className="blog-post-p">
+                      <p key={i} className="treatment-single-p">
                         {para}
                       </p>
                     ))}
                   </div>
-                  <section className="treatment-section">
-                    <h2 className="blog-post-heading">{ASTHMA_DETAIL.causes.title}</h2>
-                    <p className="blog-post-p">{ASTHMA_DETAIL.causes.intro}</p>
-                    <ul className="blog-post-list">
+                  <section className="treatment-single-section">
+                    <h2 className="treatment-single-h2">{ASTHMA_DETAIL.causes.title}</h2>
+                    <p className="treatment-single-p">{ASTHMA_DETAIL.causes.intro}</p>
+                    <ul className="treatment-single-list">
                       {ASTHMA_DETAIL.causes.items.map((item, i) => (
                         <li key={i}>
                           <strong>{item.title}</strong>
@@ -429,47 +428,47 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
                         </li>
                       ))}
                     </ul>
-                    <p className="blog-post-p">{ASTHMA_DETAIL.causes.closing}</p>
+                    <p className="treatment-single-p">{ASTHMA_DETAIL.causes.closing}</p>
                   </section>
-                  <section className="treatment-section">
-                    <h2 className="blog-post-heading">{ASTHMA_DETAIL.symptoms.title}</h2>
-                    <ul className="blog-post-list">
+                  <section className="treatment-single-section">
+                    <h2 className="treatment-single-h2">{ASTHMA_DETAIL.symptoms.title}</h2>
+                    <ul className="treatment-single-list">
                       {ASTHMA_DETAIL.symptoms.items.map((item, i) => (
                         <li key={i}>{item}</li>
                       ))}
                     </ul>
-                    <p className="blog-post-p">{ASTHMA_DETAIL.closing}</p>
+                    <p className="treatment-single-p">{ASTHMA_DETAIL.closing}</p>
                   </section>
                 </>
               ) : (
                 <>
-                  <p className="blog-post-p">{t.description}</p>
-                  <section className="treatment-section">
-                    <h2 className="blog-post-heading">Why homoeopathy for this condition?</h2>
-                    <p className="blog-post-p">
+                  <p className="treatment-single-p">{t.description}</p>
+                  <section className="treatment-single-section">
+                    <h2 className="treatment-single-h2">Why homoeopathy for this condition?</h2>
+                    <p className="treatment-single-p">
                       At {CLINIC.name}, we use constitutional homoeopathy to address the root cause, not just symptoms. Treatment is personalized, gentle and suitable for all ages. We are based in Melattur, Malappuram district, Kerala. In-clinic and online consultation is also available.
                     </p>
                   </section>
-                  <section className="treatment-section">
-                    <h2 className="blog-post-heading">Our approach</h2>
-                    <p className="blog-post-p">
+                  <section className="treatment-single-section">
+                    <h2 className="treatment-single-h2">Our approach</h2>
+                    <p className="treatment-single-p">
                       We focus on understanding your complete health picture. Homoeopathic treatment is gentle, with minimal or no side effects, and can be used for all age groups. Book an in-clinic visit or an online consultation at your convenience.
                     </p>
                   </section>
                 </>
               )}
 
-              </div>
+          </div>
 
-              <footer className="blog-post-footer">
-                <Link href="/treatments" className="blog-post-back">← Back to treatments</Link>
+          <footer className="treatment-single-footer">
+                <Link href="/treatments" className="treatment-single-back">← Back to treatments</Link>
                 <a href="https://wa.me/917356736929" target="_blank" rel="noopener noreferrer" className="btn btn-teal">
                   Book Appointment via WhatsApp
                 </a>
               </footer>
 
               <nav className="treatment-related treatment-related-grid-wrap" aria-label="Related treatments">
-                <h2 className="blog-post-heading">Other treatments we offer</h2>
+                <h2 className="treatment-single-h2">Other treatments we offer</h2>
                 <div className="treatment-related-grid">
                   {otherSlugs.map((s) => {
                     const imgSrc = TREATMENT_IMAGES[s]
@@ -493,9 +492,8 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
                     </span>
                     <span className="treatment-related-circle-label">All treatments</span>
                   </Link>
-                </div>
-              </nav>
             </div>
+          </nav>
           </div>
         </article>
       </main>

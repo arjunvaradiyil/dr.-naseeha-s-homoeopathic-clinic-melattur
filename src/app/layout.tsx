@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import type { Metadata } from 'next'
 import { SITE_URL, CLINIC } from '@/lib/seo'
 
 export const viewport = {
@@ -8,7 +9,7 @@ export const viewport = {
   themeColor: '#0d9488',
 }
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: `Homoeopathic Clinic Melattur | ${CLINIC.nameShort}`,
@@ -31,6 +32,9 @@ export const metadata = {
   },
   alternates: {
     canonical: SITE_URL,
+  },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
   },
 }
 

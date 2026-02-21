@@ -1,5 +1,16 @@
+import { withPayload } from '@payloadcms/next/withPayload'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    reactCompiler: false,
+  },
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'www.drnaseehashomoeopathicclinicmelattur.com', pathname: '/**' },
+      { protocol: 'http', hostname: 'localhost', pathname: '/**' },
+    ],
+  },
   async redirects() {
     return [
       { source: '/about-doctor', destination: '/about', permanent: true },
@@ -27,4 +38,4 @@ const nextConfig = {
   },
 }
 
-export default nextConfig
+export default withPayload(nextConfig)

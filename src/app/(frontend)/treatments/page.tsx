@@ -35,48 +35,64 @@ export const metadata = {
   alternates: { canonical: canonical('/treatments') },
 }
 
+function treatmentTitleDisplay(h1: string) {
+  return h1
+    .replace(' with Homeopathy in Melattur', '')
+    .replace(' in Malappuram & Melattur', '')
+    .replace(' & Knee Pain Treatment with Homeopathy in Melattur', '')
+    .trim()
+}
+
 export default function TreatmentsIndexPage() {
   return (
     <>
       <Header />
       <main className="treatments-page">
         <PageBanner title="TREATMENTS" items={[{ label: 'HOME', href: '/' }, { label: 'TREATMENTS' }]} />
-        <div className="treatments-inner">
-          <header className="treatments-hero">
-            <h1 className="treatments-hero-title">Homoeopathy Treatments in Melattur & Malappuram</h1>
-            <p className="treatments-hero-intro">
-              At {CLINIC.name}, we offer personalized homoeopathic care for a wide range of conditions. Each treatment plan is tailored to your needs. Consultations are available at our clinic in Melattur, Kerala—<strong>online consultation is also available</strong>.
-            </p>
-            <a href="https://wa.me/917356736929" target="_blank" rel="noopener noreferrer" className="btn btn-teal treatments-hero-cta">Book Appointment via WhatsApp</a>
-          </header>
 
-          <section className="treatments-list" aria-labelledby="treatment-list-heading">
-            <h2 id="treatment-list-heading" className="treatments-list-title">Our Treatments</h2>
-            <ul className="treatments-grid">
-              {TREATMENT_SLUGS.map((slug) => {
-                const t = TREATMENTS[slug]
-                const img = TREATMENT_IMAGES[slug]
-                const title = t.h1.replace(' with Homeopathy in Melattur', '').replace(' in Malappuram & Melattur', '').replace(' & Knee Pain Treatment with Homeopathy in Melattur', '')
-                return (
-                  <li key={slug}>
-                    <Link href={`/treatments/${slug}`} className="expertise-card">
-                      {img && (
-                        <span className="expertise-card-icon">
-                          <Image src={img} alt="" width={48} height={48} className="expertise-card-img" />
-                        </span>
-                      )}
-                      <h3 className="expertise-card-title">{title}</h3>
-                      <p className="expertise-card-summary">{t.description.slice(0, 120)}…</p>
-                      <span className="expertise-card-btn">View details →</span>
-                    </Link>
-                  </li>
-                )
-              })}
-            </ul>
-            <div className="treatments-cta">
-              <a href="https://wa.me/917356736929" target="_blank" rel="noopener noreferrer" className="btn btn-teal">Book Appointment via WhatsApp</a>
-            </div>
+        <div className="treatments-layout">
+          <section className="treatments-intro">
+            <h1 className="treatments-intro-title">Homoeopathy treatments in Melattur &amp; Malappuram</h1>
+            <p className="treatments-intro-desc">
+              At {CLINIC.name}, we offer personalized homoeopathic care for a wide range of conditions. Each plan is tailored to you. In-clinic and online consultation available.
+            </p>
+            <a href="https://wa.me/917356736929" target="_blank" rel="noopener noreferrer" className="btn btn-teal">Book via WhatsApp</a>
           </section>
+
+          <h2 className="treatments-grid-heading">Our treatments</h2>
+          <ul className="treatments-grid-new">
+            {TREATMENT_SLUGS.map((slug) => {
+              const t = TREATMENTS[slug]
+              const img = TREATMENT_IMAGES[slug]
+              const title = treatmentTitleDisplay(t.h1)
+              return (
+                <li key={slug}>
+                  <Link href={`/treatments/${slug}`} className="treatment-card" aria-label={title}>
+                    {img && (
+                      <div className="treatment-card-media">
+                        <Image
+                          src={img}
+                          alt=""
+                          fill
+                          className="treatment-card-img"
+                          sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 33vw"
+                        />
+                      </div>
+                    )}
+                    <div className="treatment-card-body">
+                      <h3 className="treatment-card-title">{title}</h3>
+                      <p className="treatment-card-summary">{t.description.slice(0, 120)}…</p>
+                      <span className="treatment-card-cta">View details →</span>
+                    </div>
+                  </Link>
+                </li>
+              )
+            })}
+          </ul>
+
+          <div className="treatments-cta-wrap">
+            <a href="https://wa.me/917356736929" target="_blank" rel="noopener noreferrer" className="btn btn-teal">Book appointment via WhatsApp</a>
+          </div>
 
           <ResultsSection />
         </div>

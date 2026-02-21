@@ -3,7 +3,8 @@
  * Used for metadata, sitemap, robots, and JSON-LD schema.
  */
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://drnaseeha.com'
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.drnaseehashomoeopathicclinicmelattur.com'
 
 export const CLINIC = {
   name: "Dr. Naseeha's Homoeopathic Clinic",
