@@ -1,9 +1,16 @@
 import Link from 'next/link'
 import ScrollToTop from './ScrollToTop'
+import { SITE_URL } from '@/lib/seo'
+
+const SITE_DOMAIN = SITE_URL.replace(/^https?:\/\//, '').replace(/\/$/, '')
+
+function CurrentYear() {
+  return new Date().getFullYear()
+}
 
 export default function Footer() {
   return (
-    <footer className="site-footer" id="contact">
+    <footer className="site-footer" id="contact" role="contentinfo" aria-label="Site footer">
       <div className="footer-top-bar">
         <p className="footer-top-text">
           <span className="footer-top-text-inner">Allergy  &amp; / Skin  / Gynaecology / PCOD / Migraine / Hair Loss / Diabetes / Thyroid / Knee &amp; Back Pain / Uric Acid / Homoeopathy</span>
@@ -59,15 +66,19 @@ export default function Footer() {
       </div>
       <div className="footer-bottom">
         <ScrollToTop />
-        <p className="footer-copyright">
-          Copyright © Dr. Naseeha&apos;s Homoeopathic Clinic — All Rights Reserved.
-          <span className="footer-sep">|</span>
+        <nav className="footer-legal footer-bottom-left" aria-label="Legal and policies">
           <Link href="/privacy">Privacy Policy</Link>
-          <span className="footer-sep">|</span>
+          <span className="footer-sep" aria-hidden="true">|</span>
           <Link href="/terms">Terms of Use</Link>
+          <span className="footer-sep" aria-hidden="true">|</span>
+          <Link href="/about">About Us</Link>
+        </nav>
+        <p className="footer-license footer-bottom-center">
+          <a href={SITE_URL} rel="noopener noreferrer">{SITE_DOMAIN}</a>
+          {' © '}<CurrentYear />
         </p>
-        <p className="footer-developed">
-          Developed by Arjun
+        <p className="footer-developed footer-bottom-right">
+          Developed by AV
         </p>
       </div>
     </footer>

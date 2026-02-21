@@ -2977,10 +2977,13 @@ a.expertise-card:hover .expertise-card-btn {
     font-size: 0.9375rem;
   }
   .footer-copyright,
+  .footer-legal,
+  .footer-license,
   .footer-developed {
     font-size: 0.8rem;
   }
   .footer-bottom {
+    display: flex;
     flex-direction: column;
     gap: 0.75rem;
     text-align: center;
@@ -3127,15 +3130,27 @@ a.expertise-card:hover .expertise-card-btn {
 .footer-social-icon:nth-child(3) { background: var(--color-teal); }
 
 .footer-bottom {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
   gap: 1rem;
   padding: 1rem 1.5rem;
   border-top: 1px solid var(--color-border);
   background: var(--color-white);
   position: relative;
+}
+
+.footer-bottom-left {
+  justify-self: start;
+}
+
+.footer-bottom-center {
+  justify-self: center;
+  text-align: center;
+}
+
+.footer-bottom-right {
+  justify-self: end;
 }
 
 .footer-scroll-top {
@@ -3161,20 +3176,44 @@ a.expertise-card:hover .expertise-card-btn {
   color: var(--color-white);
 }
 
+.footer-legal {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.footer-legal a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.footer-legal a:hover {
+  color: var(--color-teal);
+  text-decoration: underline;
+}
+
 .footer-copyright {
   margin: 0;
   font-size: 0.85rem;
   color: var(--color-text);
 }
 
-.footer-copyright a {
+.footer-license {
+  margin: 0;
+  font-size: 0.85rem;
   color: var(--color-text);
-  text-decoration: none;
 }
 
-.footer-copyright a:hover {
-  color: var(--color-teal);
+.footer-license a {
+  color: var(--color-text);
   text-decoration: underline;
+}
+
+.footer-license a:hover {
+  color: var(--color-teal);
 }
 
 .footer-sep {
@@ -3225,6 +3264,7 @@ a.expertise-card:hover .expertise-card-btn {
   }
 
   .footer-bottom {
+    display: flex;
     flex-direction: column;
     text-align: center;
   }
@@ -3233,13 +3273,22 @@ a.expertise-card:hover .expertise-card-btn {
     position: static;
   }
 
-  .footer-copyright {
+  .footer-bottom-left,
+  .footer-bottom-center,
+  .footer-bottom-right {
+    justify-self: unset;
+  }
+
+  .footer-legal {
     order: 1;
   }
 
-  .footer-developed {
-    margin-left: 0;
+  .footer-license {
     order: 2;
+  }
+
+  .footer-developed {
+    order: 3;
   }
 }
 
