@@ -67,7 +67,7 @@ export default function Footer() {
           <Link href="/terms">Terms of Use</Link>
         </p>
         <p className="footer-developed">
-          Developed by <a href="https://arjunvaradiyil.in" target="_blank" rel="noopener noreferrer">Arjun Varadiyil</a>
+          Developed by Arjun
         </p>
       </div>
     </footer>
