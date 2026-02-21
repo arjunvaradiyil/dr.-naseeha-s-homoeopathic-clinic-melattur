@@ -31,5 +31,5 @@ export default buildConfig({
       url: process.env.DATABASE_URL || 'file:./payload.db',
     },
   }),
-  sharp: sharp as SharpDependency,
+  sharp: sharp as unknown as SharpDependency,
 })
